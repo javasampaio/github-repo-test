@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_internet_connection">Houve um problemas de conexão à internet</string>
+    <string name="timeout">A busca falhou porque a chamada atingiu o seu tempo limite</string>
+    <string name="other">A busca falhou por problemas com o servidor</string>
+</resources>

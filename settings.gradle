@@ -2,3 +2,4 @@ rootProject.name = "GitHubRepo"
 include ':app'
 include ':domain'
 include ':datasource'
+include ':common'
