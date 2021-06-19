@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="repo"
+            type="com.challenge.domain.model.GitRepoModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeableImageView"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            app:context="@{context}"
+            app:layout_constraintBottom_toTopOf="@+id/username"
+            app:layout_constraintEnd_toEndOf="@+id/username"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadImage="@{repo}"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/username"
+            style="@style/UserNameMainTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minWidth="@dimen/image_size"
+            android:text="@{repo.nameOwner}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Nome Usuario" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/repo_name"
+            style="@style/MainTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{repo.name}"
+            app:layout_constraintEnd_toStartOf="@+id/shapeableImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Nome Repositorio" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/repo_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="@{repo.description}"
+            app:layout_constraintEnd_toStartOf="@+id/shapeableImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/repo_name"
+            tools:text="Descrição Rpositorio" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/repo_forks"
+            style="@style/OrangeTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_fork"
+            app:forkText="@{repo}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/repo_description"
+            tools:text="640" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/repo_stars"
+            style="@style/OrangeTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:drawableStart="@drawable/ic_star"
+            app:layout_constraintStart_toEndOf="@+id/repo_forks"
+            app:layout_constraintTop_toBottomOf="@+id/repo_description"
+            app:starText="@{repo}"
+            tools:text="98" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

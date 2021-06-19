@@ -21,6 +21,8 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.fragment.app.FragmentContainerView
+        android:fitsSystemWindows="true"
+        android:layout_marginTop="?android:attr/actionBarSize"
         android:id="@+id/host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
