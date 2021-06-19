@@ -14,7 +14,7 @@ class RepoDtoTest {
         Assert.assertEquals(repoDto.toModel(), repoModel)
     }
 
-    val repoDto = RepoDto(
+    private val repoDto = RepoDto(
         name = "git repo",
         owner = getOwner(),
         description = "git repo description",
@@ -22,10 +22,10 @@ class RepoDtoTest {
         forks = 100
     )
 
-    val repoModel = GitRepoModel(
-        nameRepo = "git repo",
+    private val repoModel = GitRepoModel(
+        name = "git repo",
         nameOwner = getOwner().login,
-        photoOwner = getOwner().avatar_url,
+        imageOwner = getOwner().avatar_url,
         description = "git repo description",
         numberStars = 1122,
         forks = 100

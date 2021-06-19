@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="pull"
             type="com.challenge.domain.model.GitPullModel" />
@@ -11,13 +13,66 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="24dp">
+        android:paddingTop="@dimen/default_padding"
+        android:paddingBottom="@dimen/default_padding">
+
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/repo_name"
+            android:id="@+id/pull_name"
+            style="@style/MainTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@{pull.titlePr}"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Titulo pull" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/pull_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="5"
+            android:paddingTop="@dimen/text_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@{pull.bodyPr}"
+            app:layout_constraintTop_toBottomOf="@+id/pull_name"
+            tools:text="Body" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/userPullImageView"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            app:context="@{context}"
+            android:layout_marginTop="@dimen/default_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pull_description"
+            app:loadImage="@{pull.userImage}"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/username"
+            style="@style/UserNameMainTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@{pull.namePr}"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="@dimen/default_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/userPullImageView"
+            app:layout_constraintStart_toEndOf="@+id/userPullImageView"
+            app:layout_constraintTop_toTopOf="@+id/userPullImageView"
+            tools:text="Nome Usuario" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/pull_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minWidth="@dimen/image_size"
+            app:formatDate="@{pull.datePr}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Pull data" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

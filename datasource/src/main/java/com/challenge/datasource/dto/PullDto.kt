@@ -13,7 +13,8 @@ data class PullDto(
             namePr = user.login,
             titlePr = title,
             datePr = created_at,
-            bodyPr = body
+            bodyPr = body,
+            userImage = user.avatar_url ?: ""
         )
     }
 }

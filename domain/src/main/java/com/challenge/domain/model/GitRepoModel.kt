@@ -4,7 +4,7 @@ data class GitRepoModel(
     val name: String,
     val description: String,
     val nameOwner: String,
-    val photoOwner: String,
+    val imageOwner: String,
     val numberStars: Int,
     val forks: Int
 )

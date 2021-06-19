@@ -7,6 +7,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.challenge.domain.model.GitRepoModel
 import com.challenge.githubrepo.R
+import com.challenge.githubrepo.helper.DateHelper
 
 @BindingAdapter("forkText")
 fun forkText(textView: TextView, item: GitRepoModel?) {
@@ -23,11 +24,25 @@ fun starText(textView: TextView, item: GitRepoModel?) {
 }
 
 @BindingAdapter("context", "loadImage")
-fun loadImage(imageView: ImageView, context: Context, item: GitRepoModel?) {
-    item?.let {
+fun loadImage(imageView: ImageView, context: Context, url: String?) {
+    url?.let {
         Glide.with(context)
-            .load(it.photoOwner)
+            .load(it)
             .placeholder(R.drawable.ic_default_profile)
             .into(imageView)
+    }
+}
+
+@BindingAdapter("formatDate")
+fun formatDate(textView: TextView, date: String?) {
+    date?.let { dateString ->
+        try {
+            val dateValue = DateHelper.stringToLocalDate(dateString)
+            dateValue?.let {
+                textView.text = DateHelper.dateToStringFormatted(it)
+            }
+        } catch (e: Exception){
+            textView.text = textView.resources.getString(R.string.error_date)
+        }
     }
 }

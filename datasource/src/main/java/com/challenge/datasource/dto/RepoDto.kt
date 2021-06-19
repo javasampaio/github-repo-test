@@ -13,7 +13,7 @@ data class RepoDto(
         return GitRepoModel(
             name = name,
             nameOwner = owner.login,
-            photoOwner = owner.avatar_url,
+            imageOwner = owner.avatar_url,
             description = description ?: "",
             numberStars = stargazers_count,
             forks = forks

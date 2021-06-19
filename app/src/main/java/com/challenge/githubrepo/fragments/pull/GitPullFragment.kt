@@ -9,15 +9,17 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.challenge.common.state.LoadingState
 import com.challenge.githubrepo.MainActivity
+import com.challenge.githubrepo.R
 import com.challenge.githubrepo.actionbar.ShowUpButtonListener
 import com.challenge.githubrepo.adapter.GitPullAdapter
 import com.challenge.githubrepo.adapter.GitRepoAdapter
 import com.challenge.githubrepo.databinding.GitPullLayoutBinding
+import com.challenge.githubrepo.fragments.BaseFragment
 import com.challenge.githubrepo.helper.showSnackbar
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.core.parameter.parametersOf
 
-class GitPullFragment : Fragment() {
+class GitPullFragment : BaseFragment() {
 
     private lateinit var binding: GitPullLayoutBinding
 
@@ -26,8 +28,6 @@ class GitPullFragment : Fragment() {
     private lateinit var pullAdapter: GitPullAdapter
 
     private val args: GitPullFragmentArgs by navArgs()
-
-    private lateinit var showUpButtonListener: ShowUpButtonListener
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,22 +45,18 @@ class GitPullFragment : Fragment() {
         return binding.root
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is ShowUpButtonListener) {
-            showUpButtonListener = context
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupAdapter()
         setupObservers()
-        showUpButtonListener.showUpButton()
+        showUpButton()
+        setTitle(args.repo)
     }
 
     private fun setupAdapter() {
         pullAdapter = GitPullAdapter()
+        addDividerRecycler(binding.pullRecycler)
         binding.pullRecycler.apply {
             adapter = pullAdapter
         }

@@ -1,31 +1,28 @@
 package com.challenge.githubrepo.fragments.repo
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.challenge.common.state.LoadingState
 import com.challenge.domain.model.GitRepoModel
-import com.challenge.githubrepo.actionbar.ShowUpButtonListener
+import com.challenge.githubrepo.R
 import com.challenge.githubrepo.adapter.GitRepoAdapter
 import com.challenge.githubrepo.databinding.GitRepoLayoutBinding
+import com.challenge.githubrepo.fragments.BaseFragment
 import com.challenge.githubrepo.helper.showSnackbar
 import org.koin.android.ext.android.inject
 
-class GitRepoFragment : Fragment() {
+class GitRepoFragment : BaseFragment() {
 
     private lateinit var binding: GitRepoLayoutBinding
 
     private lateinit var repoAdapter: GitRepoAdapter
 
     private val repoViewMode: GitRepoViewModel by inject()
-
-    private lateinit var showUpButtonListener: ShowUpButtonListener
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,19 +33,14 @@ class GitRepoFragment : Fragment() {
         return binding.root
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is ShowUpButtonListener) {
-            showUpButtonListener = context
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupAdapter()
         setupObservers()
         setupEndScrollListener()
-        showUpButtonListener.hideUpButton()
+        hideUpButton()
+        setTitle(getString(R.string.repo_title))
     }
 
     private fun setupEndScrollListener() {
@@ -68,6 +60,7 @@ class GitRepoFragment : Fragment() {
 
     private fun setupAdapter() {
         repoAdapter = GitRepoAdapter(listenerItemRemove)
+        addDividerRecycler(binding.repoRecycler)
         binding.repoRecycler.apply {
             adapter = repoAdapter
         }
