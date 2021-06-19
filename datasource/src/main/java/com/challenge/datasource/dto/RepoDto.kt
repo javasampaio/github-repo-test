@@ -2,7 +2,7 @@ package com.challenge.datasource.dto
 
 import com.challenge.domain.model.GitRepoModel
 
-data class ItemsDto(
+data class RepoDto(
     val name: String,
     val owner: OwnerDto,
     val description: String,
@@ -11,7 +11,7 @@ data class ItemsDto(
 ) {
     fun toModel(): GitRepoModel {
         return GitRepoModel(
-            nameRepo = name,
+            name = name,
             nameOwner = owner.login,
             photoOwner = owner.avatar_url,
             description = description,

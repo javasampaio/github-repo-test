@@ -7,14 +7,14 @@ import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class ItemsDtoTest {
+class RepoDtoTest {
 
     @Test
     fun toModelShouldParseToModel() {
-        Assert.assertEquals(itemDto.toModel(), itemModel)
+        Assert.assertEquals(repoDto.toModel(), repoModel)
     }
 
-    val itemDto = ItemsDto(
+    val repoDto = RepoDto(
         name = "git repo",
         owner = getOwner(),
         description = "git repo description",
@@ -22,7 +22,7 @@ class ItemsDtoTest {
         forks = 100
     )
 
-    val itemModel = GitRepoModel(
+    val repoModel = GitRepoModel(
         nameRepo = "git repo",
         nameOwner = getOwner().login,
         photoOwner = getOwner().avatar_url,

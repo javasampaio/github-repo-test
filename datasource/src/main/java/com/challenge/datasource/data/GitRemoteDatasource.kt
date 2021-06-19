@@ -11,6 +11,6 @@ class GitRemoteDatasource(private val gitClient: GitClient) : GitDatasource {
     }
 
     override suspend fun getPulls(author: String, repo: String): List<GitPullModel> {
-        return gitClient.getPull(author, repo)
+        return gitClient.getPull(author, repo).map { it.toModel() }
     }
 }

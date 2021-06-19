@@ -1,10 +1,10 @@
 package com.challenge.datasource.client
 
+import com.challenge.datasource.dto.PullDto
 import com.challenge.datasource.response.RepoResponse
-import com.challenge.domain.model.GitPullModel
+import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import retrofit2.http.GET
 
 interface GitClient {
     @GET("search/repositories?q=language:Java&sort=stars")
@@ -14,5 +14,5 @@ interface GitClient {
     suspend fun getPull(
         @Path("owner") owner: String,
         @Path("repo") repo: String
-    ): List<GitPullModel>
+    ): List<PullDto>
 }

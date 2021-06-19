@@ -1,7 +1,7 @@
 package com.challenge.domain.model
 
 data class GitRepoModel(
-    val nameRepo: String,
+    val name: String,
     val description: String,
     val nameOwner: String,
     val photoOwner: String,
