@@ -5,7 +5,7 @@ import com.challenge.domain.model.GitPullModel
 data class PullDto(
     val user: UserDto,
     val title: String,
-    val body: String,
+    val body: String?,
     val created_at: String
 ) {
     fun toModel(): GitPullModel {
@@ -13,7 +13,7 @@ data class PullDto(
             namePr = user.login,
             titlePr = title,
             datePr = created_at,
-            bodyPr = body,
+            bodyPr = body ?: "",
             userImage = user.avatar_url ?: ""
         )
     }

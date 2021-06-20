@@ -17,10 +17,8 @@ abstract class BaseViewModel(
 
     private val mutableLoading = MutableLiveData<LoadingState>()
 
-    //private val mutableLoaded = MutableLiveData<List<MODEL>>()
     private val mutableError = MutableLiveData<RemoteError>()
 
-    //val loaded: LiveData<List<MODEL>> = mutableLoaded
     val loading: LiveData<LoadingState> = mutableLoading
     val error: LiveData<RemoteError> = mutableError
 

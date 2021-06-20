@@ -1,18 +1,12 @@
 package com.challenge.githubrepo.fragments.pull
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.challenge.common.state.LoadingState
-import com.challenge.githubrepo.MainActivity
-import com.challenge.githubrepo.R
-import com.challenge.githubrepo.actionbar.ShowUpButtonListener
 import com.challenge.githubrepo.adapter.GitPullAdapter
-import com.challenge.githubrepo.adapter.GitRepoAdapter
 import com.challenge.githubrepo.databinding.GitPullLayoutBinding
 import com.challenge.githubrepo.fragments.BaseFragment
 import com.challenge.githubrepo.helper.showSnackbar

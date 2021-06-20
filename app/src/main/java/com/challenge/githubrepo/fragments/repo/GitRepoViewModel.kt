@@ -2,18 +2,11 @@ package com.challenge.githubrepo.fragments.repo
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.challenge.common.error.RemoteError
-import com.challenge.common.state.ErrorState
-import com.challenge.common.state.Loaded
-import com.challenge.common.state.LoadingState
 import com.challenge.domain.model.GitRepoModel
 import com.challenge.domain.usecases.GetRepoUseCase
 import com.challenge.githubrepo.fragments.BaseViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class GitRepoViewModel(private val getRepoUseCase: GetRepoUseCase) : BaseViewModel() {
 
