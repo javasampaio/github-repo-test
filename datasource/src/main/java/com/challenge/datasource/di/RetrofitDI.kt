@@ -37,7 +37,7 @@ object RetrofitDI {
                 .client(get())
                 .addConverterFactory(
                     GsonConverterFactory.create(
-                        GsonBuilder().setLenient().create()
+                        GsonBuilder().create()
                     )
                 )
         }

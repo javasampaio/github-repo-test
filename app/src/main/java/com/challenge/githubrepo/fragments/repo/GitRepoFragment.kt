@@ -79,7 +79,7 @@ class GitRepoFragment : BaseFragment() {
 
         repoViewMode.error.observe(viewLifecycleOwner) {
             it?.let {
-                showSnackbar(binding.root, it.message)
+                showSnackbar(it.message)
             }
         }
     }

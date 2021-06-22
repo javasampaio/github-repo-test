@@ -11,4 +11,16 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="repo_title">GitHub Repo Challenge</string>
     <string name="error_date">Data desconhecida</string>
+
+    <string name="repo_name_description">Nome do repositório %s</string>
+    <string name="starts_description">Número de stars %s</string>
+    <string name="forks_description">Número de forks %s </string>
+    <string name="repo_description">Descrição do repositório %s</string>
+    <string name="username_description">Nome do autor %s</string>
+    <string name="repo_item_description">Item %s da lista de repositório</string>
+
+    <string name="pull_description">Nome do pull request %s</string>
+    <string name="pull_body_description">Conteúdo do body do pull request %s</string>
+    <string name="pull_username_description">Conteúdo do autor do pull request %s</string>
+    <string name="pull_date_description">Data da criação do pull request %s</string>
 </resources>

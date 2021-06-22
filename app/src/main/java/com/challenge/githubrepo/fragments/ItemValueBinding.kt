@@ -13,6 +13,8 @@ import com.challenge.githubrepo.helper.DateHelper
 fun forkText(textView: TextView, item: GitRepoModel?) {
     item?.let {
         textView.text = it.forks.toString()
+        textView.contentDescription = textView.resources
+            .getString(R.string.forks_description, it.forks.toString())
     }
 }
 
@@ -20,6 +22,8 @@ fun forkText(textView: TextView, item: GitRepoModel?) {
 fun starText(textView: TextView, item: GitRepoModel?) {
     item?.let {
         textView.text = it.numberStars.toString()
+        textView.contentDescription = textView.resources
+            .getString(R.string.starts_description, it.numberStars.toString())
     }
 }
 
@@ -39,9 +43,12 @@ fun formatDate(textView: TextView, date: String?) {
         try {
             val dateValue = DateHelper.stringToLocalDate(dateString)
             dateValue?.let {
-                textView.text = DateHelper.dateToStringFormatted(it)
+                val dateFormatted = DateHelper.dateToStringFormatted(it)
+                textView.text = dateFormatted
+                textView.contentDescription = textView.resources
+                    .getString(R.string.pull_date_description, dateFormatted)
             }
-        } catch (e: Exception){
+        } catch (e: Exception) {
             textView.text = textView.resources.getString(R.string.error_date)
         }
     }

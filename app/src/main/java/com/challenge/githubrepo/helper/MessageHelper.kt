@@ -1,11 +1,11 @@
 package com.challenge.githubrepo.helper
 
-import android.view.View
 import androidx.annotation.StringRes
+import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 
-fun showSnackbar(view: View, @StringRes message: Int) {
-    val snack = Snackbar.make(view, message, Snackbar.LENGTH_INDEFINITE)
+fun Fragment.showSnackbar(@StringRes message: Int) {
+    val snack = Snackbar.make(requireView(), message, Snackbar.LENGTH_INDEFINITE)
     snack.setAction(android.R.string.ok) {
         snack.dismiss()
     }
