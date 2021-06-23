@@ -42,13 +42,26 @@ class GetRepoUseCaseTest : BaseTest() {
     }
 
     @Test
-    fun shouldCallRepositoryAndReturnEmptyList() = runBlockingTest {
+    fun shouldCallRepositoryAndReturnData() = runBlockingTest {
         val page = 1
-        Mockito.`when`(gitRepository.getRepo(page)).thenReturn(Loaded(emptyList()))
+        Mockito.`when`(gitRepository.getRepo(page)).thenReturn(Loaded(getMockedList()))
 
         val result = getRepoUseCase.invoke(page) as Loaded<List<GitRepoModel>>
 
         Mockito.verify(gitRepository).getRepo(page)
-        Assert.assertEquals(result.result, emptyList<GitRepoModel>())
+        Assert.assertEquals(result.result, getMockedList())
+    }
+
+    private fun getMockedList(): List<GitRepoModel> {
+        return listOf(
+            GitRepoModel(
+                name = "Name",
+                description = "desc",
+                nameOwner = "Sam",
+                imageOwner = "",
+                numberStars = 10,
+                forks = 15
+            )
+        )
     }
 }

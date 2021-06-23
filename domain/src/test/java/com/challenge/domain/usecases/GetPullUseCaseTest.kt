@@ -40,14 +40,26 @@ class GetPullUseCaseTest : BaseTest() {
     }
 
     @Test
-    fun shouldCallRepositoryAndReturnEmptyList() = runBlockingTest {
+    fun shouldCallRepositoryAndReturnData() = runBlockingTest {
         val author = "author"
         val repo = "repo"
-        Mockito.`when`(gitRepository.getPulls(author, repo)).thenReturn(Loaded(emptyList()))
+        Mockito.`when`(gitRepository.getPulls(author, repo)).thenReturn(Loaded(getMockedList()))
 
         val result = getPullUseCase.invoke(author, repo) as Loaded<List<GitPullModel>>
 
         Mockito.verify(gitRepository).getPulls(author, repo)
-        Assert.assertEquals(result.result, emptyList<GitPullModel>())
+        Assert.assertEquals(result.result, getMockedList())
+    }
+
+    private fun getMockedList(): List<GitPullModel> {
+        return listOf(
+            GitPullModel(
+                namePr = "Name",
+                titlePr = "title",
+                datePr = "2021-06-22",
+                bodyPr = "body",
+                userImage = ""
+            )
+        )
     }
 }
